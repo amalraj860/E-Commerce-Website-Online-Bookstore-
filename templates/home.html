@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>reads.com</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        body {
+            background: white;
+            text-align: center;
+        }
+        .navbar {
+            padding: 60px;
+            background: RebeccaPurple;
+        }
+        .navbar-brand {
+            font-weight: bold;
+            font-size: 1.5rem;
+            color: #f2f2f2;
+            text-decoration: none;
+        }
+        .navbar-brand:hover {
+            background-color: transparent;
+            color: #f2f2f2;
+        }
+        .container-fluid {
+            padding: 120px;
+            font-family: 'Nunito Sans', sans-serif;
+        }
+        .quote:not(:first-child) {
+            display: none;
+        }
+        a {
+            margin: 0 10px;
+            padding: 3px;
+            border: 1px solid #007bff;
+            border-radius: 5px;
+            text-decoration: none;
+            color: #007bff;
+            font-size: 14px;
+            transition: background-color 0.3s ease;
+        }
+        a:hover {
+            background-color: #007bff;
+            color: #fff;
+            text-decoration: None;
+        }
+        .header-link {
+            margin: 0 10px;
+            padding: 5px;
+            border: 0px;
+            border-radius: 5px;
+            text-decoration: none;
+            color: #f2f2f2;
+            font-size: 12px;
+            transition: background-color 0.3s ease;
+        }
+        .header-link:hover {
+            background-color: #f2f2f2;
+            color: #000;
+            text-decoration: None;
+        }
+        .container-details {
+            padding: 100px;
+            font-family: 'Nunito Sans', sans-serif;
+        }
+        .card {
+            border: none;
+            padding: 10px;
+            color: white;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.6);
+            background-image: url('https://img.freepik.com/free-vector/earth-view-night-from-alien-planet-neon-space_33099-1876.jpg?w=826&t=st=1680155762~exp=1680156362~hmac=fff344dfc377f2fd23ff08f17ba88eebcf5afbcc8e639dae84f2daec01191cb4');
+        }
+        .contact-container {
+            padding: 200px;
+            background-image: url('https://wallpaperaccess.com/full/645620.png');
+            background-size: cover;
+            background-position: center;
+            color: #000;
+        }
+        .contact-container .btn {
+            box-shadow: 0 2px 4px rgba(0,0,0,0.5);
+        }
+        .site-footer {
+            background-color: #f8f8f8;
+            padding: 20px;
+            text-align: center;
+        }
+        .site-footer p {
+            margin: 0;
+            font-size: 14px;
+            color: #666;
+        }
+        @media (max-width: 767px) {
+            .contact-container {
+                padding: 100px;
+            }
+        }
+        @media screen and (max-width: 768px) {
+            .btn.btn-outline-light {
+                margin: 10px;
+            }
+        }
+    </style>
+    <script>
+        $(document).ready(function() {
+        var quotes = $('#quotes-container .quote');
+        var quoteIndex = -1;
+
+        function showNextQuote() {
+            ++quoteIndex;
+            quotes.eq(quoteIndex % quotes.length)
+                .fadeIn(2000)
+                .delay(1000)
+                .fadeOut(2000, showNextQuote);
+        }
+
+            showNextQuote();
+        });
+    </script>
+</head>
+<body>
+    <nav class="navbar">
+        <p class="navbar-brand  mx-auto">
+            Welcome to Reads.com
+            <br>
+           
+            <small style="font-size: 14px;"><i>{{name2}}</i></small>
+            <br>
+            <a class="header-link" href="{% url 'logout' %}">Logout</a>
+            
+            <small style="font-size: 14px;"><i></i></small>
+            <br>
+
+        
+        </p>
+    </nav>
+    <div class="container-fluid" id="quotes-container">
+        <div class="quote">
+            <h5><i>There is no friend as Loyal as Book.<sub> - Ernest Hemingway</sub></i></h5>
+        </div>
+        <div class="quote">
+            <h5><i>Books are a uniquely portable magic.<sub> - Stephen King</sub></i></h5>
+        </div>
+        <div class="quote">
+            <h5><i>A book is a dream that you hold in your hand.<sub> - Neil Gaiman</sub></i></h5>
+        </div>
+        <br>
+        <a href="{% url 'book_list' %}">Explore</a>
+    </div>
+    <div class="container-details" id="img-container">
+        <div class="row">
+            <div class="col-12 col-md-6" style="text-align: justify; padding-top: 60px;">
+                <h3>Explore Now!</h3>
+                <p>Create a profile for yourself and list your favourite books from our extensive collection.
+                    We have some fantastic deals. Join our community right away.</p>
+                <p style="font-size: 14px; font-weight: bold;">Enjoy your reading !</p>
+                <div class="card">
+                    <div class="card-header bg-transparent" style="text-align: center;  background: white;">
+                        <legend>Ratings & Reviews</legend>
+                    </div>
+                    <div class="card-body" style="text-align: center;">
+                        <legend> <i style="color: orange;" class="bi bi-star-fill"></i></legend>
+                        
+                        <p> reviews !</p>
+                        
+                        <pre>No reviews yet.</pre>
+                        
+                    </div>
+                    <div class="card-footer bg-transparent" style="text-align: right;  background: white;">
+                        <a style="font-size: 13px;" class="btn btn-outline-light" href="#">Rate our Site <i class="bi bi-arrow-right-circle"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-6">
+                <img src="https://img.freepik.com/free-vector/reading-book-illustration_114360-8532.jpg?w=740&t=st=1679932534~exp=1679933134~hmac=f579456a2098cdad1d93431f4c45b8a35907fb51d3a8b8acf2ff6d20237b63af" height="450" width="500" class="img-fluid img-mobile-size" style="float: right;">
+            </div>
+        </div>
+    </div>
+    <div class="contact-container">
+        <h3>Contact Us</h3>
+        <br>
+        <a class="btn btn-outline-light" href="https://www.instagram.com/"><i style="font-size: 20px;" class="bi bi-instagram"></i></a>
+        <a class="btn btn-outline-light" href="https://t.me/"><i style="font-size: 20px;" class="bi bi-telegram"></i></a>
+        <a class="btn btn-outline-light" href="@gmail.com"><i style="font-size: 20px;" class="bi bi-envelope-at-fill"></i></a>
+    </div>
+    <footer class="site-footer">
+        <div class="container">
+            <p>&copy; 2024 Amal Raj. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
